@@ -65,7 +65,7 @@ body {
     align-items: center;
 } 
 
-.pad {
+.btn {
     width: calc(var(--genius-size) / 2);
     height: calc(var(--genius-size) / 2);
     border: var(--genius-border);
@@ -76,54 +76,54 @@ body {
 }
 
 
-.pad-tl {
+.btn-top-left {
     background-color: var(--color-normal-green);
     border-top-left-radius: 100%;
 }
 
 
-.pad-tr {
+.btn-top-right {
     background-color: var(--color-normal-red);
     border-top-right-radius: 100%;
 }
 
-.pad-bl {
+.btn-bottom-left {
     background-color: var(--color-normal-yellow);
     border-bottom-left-radius: 100%;
 }
 
-.pad-br {
+.btn-botton-right {
     background-color: var(--color-normal-purple);
     border-bottom-right-radius: 100%;
 }
 
-.pad-tl.pad-active{
+.btn-top-left.btn-active{
     background-color: var(--color-light-green);
     box-shadow: 0px 0px 20px var(--color-light-green);
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
 }
 
-.pad-tl:hover {
+.btn-top-left:hover {
     box-shadow: 0px 0px 20px var(--color-light-green) ;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
 }
 
-.pad-tr.pad-active{
+.btn-top-right.btn-active{
     background-color: var(--color-light-red);
     box-shadow: 0px 0px 20px var(--color-light-red);
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
     
 }
-.pad-tr:hover {
+.btn-top-right:hover {
     box-shadow: 0px 0px 20px var(--color-light-red);
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
 }
 
-.pad-bl.pad-active{
+.btn-bottom-left.btn-active{
     background-color: var(--color-light-yellow);
     box-shadow: 0px 0px 20px var(--color-light-yellow);
     -webkit-transition: all 150ms ease-in-out;
@@ -131,25 +131,25 @@ body {
     
 }
 
-.pad-bl:hover {
+.btn-bottom-left:hover {
     box-shadow: 0px 0px 20px var(--color-light-yellow);
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
     
 }
 
-.pad-br.pad-active{
+.btn-botton-right.btn-active{
     background-color: var(--color-light-purple);
     box-shadow: 0px 0px 20px var(--color-light-purple);
 }
 
-.pad-br:hover {
+.btn-botton-right:hover {
     box-shadow: 0px 0px 20px var(--color-light-purple);
 }
 
 
 
-.pad-btn {
+.btn-btn {
     cursor: pointer;
 }
 
@@ -194,7 +194,7 @@ main {
     text-transform: uppercase;
 }
 
-.op_label--switch {
+.op_label-switch {
     margin: 0;
     padding-top: .75rem;
 }
@@ -247,12 +247,6 @@ main {
 .op_btn-switch-on::before {
     left: 0;
 }
-
-
-
-
-  
-
 
 .op_counter {
     background-color: var(--color-counter-bg);

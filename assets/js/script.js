@@ -14,7 +14,7 @@ const main = {
 	led: document.querySelector(".op_led"),
 	strict: document.querySelector(".op_btn-strict"),
 	start: document.querySelector(".op_btn-start"),
-	pads: document.querySelectorAll(".pad")
+	btns: document.querySelectorAll(".btn")
 }
 
 main.switch.addEventListener("click", () => {
@@ -30,8 +30,8 @@ main.switch.addEventListener("click", () => {
 	playGame.gameSequence = [];
 	playGame.playerSequence = [];
 
-	disablePads();
-	changePadCursor("auto");
+	disableBtns();
+	changeBtnCursor("auto");
 
 	main.led.classList.remove("op_led-active");
 });
@@ -43,19 +43,19 @@ main.strict.addEventListener("click", () => {
 
 main.start.addEventListener("click", () => startGame());
 
-const padListener = (e) => {
+const btnListener = (e) => {
 	if (!playGame.playerCanPlay) return;
 
-	e.target.classList.add("pad-active");
+	e.target.classList.add("btn-active");
 
 	setTimeout(() => {
-		e.target.classList.remove("pad-active");
+		e.target.classList.remove("btn-active");
 
 		const currentMove = playGame.playerSequence.length - 1;
 
 		if (playGame.playerSequence[currentMove] !== playGame.gameSequence[currentMove]) {
 			playGame.playerCanPlay = false;
-			disablePads();
+			disableBtns();
 			resetOrPlayAgain();
 		}
 		else if (currentMove === playGame.gameSequence.length - 1) {
@@ -66,7 +66,7 @@ const padListener = (e) => {
 	}, 250);
 }
 
-main.pads.forEach(pad => pad.addEventListener("click", padListener));
+main.btns.forEach(btn => btn.addEventListener("click", btnListener));
 
 const startGame = () => {
 	blink("--", () => {
@@ -96,41 +96,41 @@ const newColor = () => {
 
 const playSequence = () => {
 	let counter = 0,
-		padOn = true;
+		btnOn = true;
 
 	playGame.playerSequence = [];
 	playGame.playerCanPlay = false;
 
-	changePadCursor("auto");
+	changeBtnCursor("auto");
 
 	const interval = setInterval(() => {
 		if (!playGame.gameOn) {
 			clearInterval(interval);
-			disablePads();
+			disableBtns();
 			return;
 		}
 
-		if (padOn) {
+		if (btnOn) {
 			if (counter === playGame.gameSequence.length) {
 				clearInterval(interval);
-				disablePads();
+				disableBtns();
 				waitForPlayerClick();
-				changePadCursor("pointer");
+				changeBtnCursor("pointer");
 				playGame.playerCanPlay = true;
 				return;
 			}
 
 			const sndId = playGame.gameSequence[counter];
-			const pad = main.pads[sndId];
+			const btn = main.btns[sndId];
 
-			pad.classList.add("pad-active");
+			btn.classList.add("btn-active");
 			counter++;
 		}
 		else {
-			disablePads();
+			disableBtns();
 		}
 
-		padOn = !padOn;
+		btnOn = !btnOn;
 	}, 750);
 }
 
@@ -170,7 +170,7 @@ const waitForPlayerClick = () => {
 		if (!playGame.playerCanPlay)
 			return;
 
-		disablePads();
+		disableBtns();
 		resetOrPlayAgain();
 	}, 5000);
 }
@@ -193,10 +193,10 @@ const resetOrPlayAgain = () => {
 	}
 }
 
-const changePadCursor = (cursorType) => {
-	main.pads.forEach(pad => pad.style.cursor = cursorType);
+const changeBtnCursor = (cursorType) => {
+	main.btns.forEach(btn => btn.style.cursor = cursorType);
 }
 
-const disablePads = () => {
-	main.pads.forEach(pad => pad.classList.remove("pad-active"));
+const disableBtns = () => {
+	main.btns.forEach(btn => btn.classList.remove("btn-active"));
 }
