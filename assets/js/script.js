@@ -21,7 +21,7 @@ main.switch.addEventListener("click", () => {
 	playGame.gameOn = main.switch.classList.toggle("op_btn-switch-on");
 
 	main.counter.classList.toggle("op_counter-on");
-	main.counter.innerHTML = "--";
+	main.counter.innerHTML = "- -";
 
 	playGame.strict = false;
 	playGame.startGame = false;
@@ -69,7 +69,7 @@ const btnListener = (e) => {
 main.btns.forEach(btn => btn.addEventListener("click", btnListener));
 
 const startGame = () => {
-	blink("--", () => {
+	blink("- -", () => {
 		newColor();
 		playSequence();
 	});
